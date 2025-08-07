@@ -35,13 +35,26 @@ const cena = {
   ]
 };
 
+
 const desayuno = {
-  nombre: "desayuno español", precio: 6.50,
-  nombre: "desayuno francés", precio: 10.50,
-  nombre: "desayuno inglés", precio: 12.50,
+  español: [
+    { nombre: "Desayuno español pequeño", precio: 3.50 },
+    { nombre: "Desayuno español mediano", precio: 7.00 },
+    { nombre: "Desayuno español grande", precio: 9.50 }
+  ],
+
+  frances: [
+    { nombre: "Desayuno francés pequeño", precio: 4.00 },
+    { nombre: "Desayuno francés mediano", precio: 8.00 },
+    { nombre: "Desayuno francés grande", precio: 10.00 }
+  ],
+
+  ingles: [
+    { nombre: "Desayuno inglés pequeño", precio: 4.50 },
+    { nombre: "Desayuno inglés mediano", precio: 9.50 },
+    { nombre: "Desayuno inglés grande", precio: 12.00 }
+  ]
 };
-
-
 
 
 
@@ -49,6 +62,12 @@ const desayuno = {
 
 const formatoHora = /^\d{2}:\d{2}$/;
 let inputHora = '';
+
+// const rangosExcluidos = [
+//   { inicio: "23:01", fin: "06:59"},  // noche
+//   { inicio: "15:31", fin: "18:59" }  // sobremesa
+// ];
+
 
 
 do {
@@ -67,7 +86,16 @@ do {
 } while (!formatoHora.test(inputHora)); 
 
 
-//   Si el formato es correcto
+
+do {
+  alert("Fuera de Horario.  Por favor, introduce otra hora"); 
+
+} while (inputHora > "23:00" && inputHora < "07:00") or (inputHora > "15:30" && inputHora < "19:00");  
+
+
+
+
+
 
 if (inputHora !== null) {
     alert(`La hora introducida es: ${inputHora}`);
@@ -88,26 +116,30 @@ if (inputHora !== null) {
 
 
 if (inputHora !== null) {
-  // tipoMenu = 1;
+
   if (inputHora >= "08:00" && inputHora <= "11:00") {
     alert("Menú Desayuno");
      
 
 
   } else if (inputHora  > "11:00" && inputHora  <= "15:30") {
-    // tipoMenu = 2;
+ 
     alert(`Menú elegido:\nLUNCH   \n\n ENTRANTES:\n ${lunch.entrantes[0].nombre}   -   ${lunch.entrantes[1].nombre}   -   ${lunch.entrantes[2].nombre} \n PRINCIPALES:\n ${lunch.principales[0].nombre}   -   ${lunch.principales[1].nombre}   -   ${lunch.principales[2].nombre}\n POSTRES:\n ${lunch.postres[0].nombre}   -   ${lunch.postres[1].nombre}   -   ${lunch.postres[2].nombre}`);
 
-    
+    // HACEMOS LA PRUEBA AQUÍ - LUNCH
     // si han elegido HORARIO LUNCH, opción 2
-    let respEntrante = prompt(`Elige tu opción de ENTRANTES\n 1. ${lunch.entrantes[0].nombre} - 2. ${lunch.entrantes[1].nombre} - 3. ${lunch.entrantes[2].nombre}` ); 
 
+    let respEntrante = prompt(`Elige tu opción de ENTRANTES\n 1. ${lunch.entrantes[0].nombre} - 2. ${lunch.entrantes[1].nombre} - 3. ${lunch.entrantes[2].nombre}` ); 
+    let selectedEntrante = null;
     if (respEntrante !== null) {
       if (respEntrante === "1") {
+        selectedEntrante = lunch.entrantes[0];
         alert(`Has elegido la opción 1 de ENTRANTES:  ${lunch.entrantes[0].nombre} - ${lunch.entrantes[0].precio} €`);
       } else if (respEntrante === "2") {
+        selectedEntrante = lunch.entrantes[1];
         alert(`Has elegido la opción 2 de ENTRANTES:  ${lunch.entrantes[1].nombre} - ${lunch.entrantes[1].precio} €`);
       } else if (respEntrante === "3") {
+        selectedEntrante = lunch.entrantes[2];
         alert(`Has elegido la opción 3 de ENTRANTES:  ${lunch.entrantes[2].nombre} - ${lunch.entrantes[2].precio} €`);
       } else {
         alert("Opción no válida, vuelve a seleccionar");
@@ -119,13 +151,17 @@ if (inputHora !== null) {
 
 
     let respPrincipal = prompt(`Elige tu opción de Plato PRINCIPAL\n 1. ${lunch.principales[0].nombre} - 2. ${lunch.principales[1].nombre} - 3. ${lunch.principales[2].nombre}` ); // Muestra un mensaje y un valor predeterminado
+    let selectedPrincipal = null;
 
     if (respPrincipal !== null) {     
       if (respPrincipal === "1") {
+        selectedPrincipal = lunch.principales[0];
         alert(`Has elegido la opción 1 de PLATOS PRINCIPALES:   ${lunch.principales[0].nombre} - ${lunch.principales[0].precio} €`);
       } else if (respPrincipal === "2") {
+        selectedPrincipal = lunch.principales[1];
         alert(`Has elegido la opción 2 de PLATOS PRINCIPALES;   ${lunch.principales[1].nombre} - ${lunch.principales[1].precio} €`);
       } else if (respPrincipal === "3") {
+        selectedPrincipal = lunch.principales[2];
         alert(`Has elegido la opción 3 de PLATOS PRINCIPALES:   ${lunch.principales[2].nombre} - ${lunch.principales[2].precio} €`);
       } else {
         alert("Opción no válida, vuelve a seleccionar");
@@ -137,12 +173,16 @@ if (inputHora !== null) {
 
 
     let respPostre = prompt(`Elige tu opción de POSTRES\n 1. ${lunch.postres[0].nombre} - 2. ${lunch.postres[1].nombre} - 3. ${lunch.postres[2].nombre}` ); 
+    let selectedPostre = null;
     if (respPostre !== null) {     
       if (respPostre === "1") {
+        selectedPostre = lunch.postres[0];
         alert(`Has elegido la opción 1 de POSTRES:    ${lunch.postres[0].nombre} - ${lunch.postres[0].precio} €`);
       } else if (respPostre === "2") {
+        selectedPostre = lunch.postres[1];
         alert(`"Has elegido la opción 2 de POSTRES:   ${lunch.postres[1].nombre} - ${lunch.postres[1].precio} €`);
       } else if (respPostre === "3") {
+        selectedPostre = lunch.postres[2];
         alert(`Has elegido la opción 3 de POSTRES:    ${lunch.postres[2].nombre} - ${lunch.postres[2].precio} €`);
       } else {
         alert("Opción no válida, vuelve a seleccionar");
@@ -151,15 +191,18 @@ if (inputHora !== null) {
       alert("No has elegido ninguna opción.");
     }
 
+    // generar FACTURA
+    const totalFra = selectedEntrante.precio + selectedPrincipal.precio + selectedPostre.precio;
 
-      
 
-    //QUIZA GENERAR FACTURA AQUÍ DEL MENÚ LUNCH
-      alert(`--- El MENÚ seleccionado es:\n        LUNCH:   FACTURA`);
-    //GENERAR UN BUCLE CON LAS OPCIONES ELEGIDAS PARA GENERAR LA FACTURA
-   
-      /// ¿ALGO CON LAS RESPUESTAS?
-      alert("\nEntrantes:"+ respEntrante + respPrincipal + respPostre);
+    alert (`    FACTURA:\nEntrante: ${selectedEntrante.nombre} €  = ${selectedEntrante.precio} €\n
+    Plato Principal: ${selectedPrincipal.nombre} € = ${selectedPrincipal.precio} €\n
+    Postre: ${selectedPostre.nombre} € = ${selectedPostre.precio} €\n
+    --------------------------------------
+    Total factura: ${totalFra} €`);
+    
+
+
 
  
      
@@ -172,15 +215,22 @@ if (inputHora !== null) {
     //si han elegido CENAS, opción 3
 
     let respEntrante = prompt(`Elige tu opción de ENTRANTES\n 1. ${cena.entrantes[0].nombre} - 2. ${cena.entrantes[1].nombre} - 3. ${cena.entrantes[2].nombre}` ); 
+    let selectedEntrante = null;
 
     if (respEntrante !== null) {
-      // tipoMenu = 3;
+    
       if (respEntrante === "1") {
+        selectedEntrante = cena.entrantes[0];
         alert(`Has elegido la opción 1 de ENTRANTES:  ${cena.entrantes[0].nombre} - ${cena.entrantes[0].precio} €`);
+
       } else if (respEntrante === "2") {
+        selectedEntrante = cena.entrantes[1];
         alert(`Has elegido la opción 2 de ENTRANTES:  ${cena.entrantes[1].nombre} - ${cena.entrantes[1].precio} €`);
+
       } else if (respEntrante === "3") {
+        selectedEntrante = cena.entrantes[2];
         alert(`Has elegido la opción 3 de ENTRANTES:  ${cena.entrantes[2].nombre} - ${cena.entrantes[2].precio} €`);
+
       } else {
         alert("Opción no válida, vuelve a seleccionar");
       }
@@ -190,14 +240,21 @@ if (inputHora !== null) {
 
 
     let respPrincipal = prompt(`Elige tu opción de Plato PRINCIPAL\n 1. ${cena.principales[0].nombre} - 2. ${cena.principales[1].nombre} - 3. ${cena.principales[2].nombre}` ); // Muestra un mensaje y un valor predeterminado
+    let selectedPrincipal = null;
 
     if (respEntrante !== null) {     
       if (respPrincipal === "1") {
+        selectedPrincipal = cena.principales[0];
         alert(`Has elegido la opción 1 de PLATOS PRINCIPALES:   ${cena.principales[0].nombre} - ${cena.principales[0].precio} €`);
+
       } else if (respPrincipal === "2") {
+        selectedPrincipal = cena.principales[1];
         alert(`Has elegido la opción 2 de PLATOS PRINCIPALES;   ${cena.principales[1].nombre} - ${cena.principales[1].precio} €`);
+
       } else if (respPrincipal === "3") {
+        selectedPrincipal = cena.principales[2];
         alert(`Has elegido la opción 3 de PLATOS PRINCIPALES:   ${cena.principales[2].nombre} - ${cena.principales[2].precio} €`);
+
       } else {
         alert("Opción no válida, vuelve a seleccionar");
       }
@@ -208,13 +265,21 @@ if (inputHora !== null) {
 
 
     let respPostre = prompt(`Elige tu opción de POSTRES\n 1. ${cena.postres[0].nombre} - 2. ${cena.postres[1].nombre} - 3. ${cena.postres[2].nombre}` ); 
+    let selectedPostre = null;
+   
     if (respEntrante !== null) {     
       if (respPostre === "1") {
+        selectedPostre = cena.postres[0];
         alert(`Has elegido la opción 1 de POSTRES:    ${cena.postres[0].nombre} - ${cena.postres[0].precio} €`);
+
       } else if (respPostre === "2") {
+        selectedPostre = cena.postres[1];
         alert(`"Has elegido la opción 2 de POSTRES:   ${cena.postres[1].nombre} - ${cena.postres[1].precio} €`);
+
       } else if (respPostre === "3") {
+        selectedPostre = cena.postres[2];
         alert(`Has elegido la opción 3 de POSTRES:    ${cena.postres[2].nombre} - ${cena.postres[2].precio} €`);
+
       } else {
         alert("Opción no válida, vuelve a seleccionar");
       }
@@ -222,163 +287,17 @@ if (inputHora !== null) {
       alert("No has elegido ninguna opción.");
     }
 
-} else  {
-    alert("Hora incorrecta, prueba de nuevo");
-  }
+        // generar FACTURA
+
+    const totalFra = selectedEntrante.precio + selectedPrincipal.precio + selectedPostre.precio;
+
+
+    alert (`    FACTURA:    \n    Entrante: ${selectedEntrante.nombre} €  = ${selectedEntrante.precio} €\n
+    Plato Principal: ${selectedPrincipal.nombre} € = ${selectedPrincipal.precio} €\n
+    Postre: ${selectedPostre.nombre} € = ${selectedPostre.precio} €\n
+    --------------------------------------
+    Total factura: ${totalFra} €`);
+
+} 
    
 }
-
-
-
-//                   PRUEBAS VARIAS
-
-// Elegir opciones del tipo de menú elegido
-
-
-
-// // GENERANDO MENU LUNCH CON PRECIOS
-
-// function generarMenuLunch() {
-//   console.log("--- Restaurante BOTTEGA ---\n          CARTA: MENÚ - LUNCH");
-
-//   console.log("\nEntrantes:");
-//   lunch.entrantes.forEach(item => {  //redondea y limita a dos dec
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\nPrincipales:");
-//   lunch.principales.forEach(item => {
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\nPostres:");
-//   lunch.postres.forEach(item => {
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\n---------------------------");
-  
-// }
-// const menuLunch = generarMenuLunch();
-
-
-
-
-
-
-
-
-
-// // Función para mostrar MENU ELEGIDO en la consola
-// function menuElegido() {
-//   console.log(`--- El MENÚ seleccionado es:\n          ${tipoMenu}`);
-
-//   if (tipoMenu = "Lunch") {
-
-//         console.log("\nEntrantes:");
-//         lunch.entrantes.forEach(item => {  //redondea y limita a dos dec
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\nPrincipales:");
-//         lunch.principales.forEach(item => {
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\nPostres:");
-//         lunch.postres.forEach(item => {
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\n---------------------------");
-//   } else if (tipoMenu = "Cena") {
-//           console.log("\nEntrantes:");
-//         cena.entrantes.forEach(item => {  //redondea y limita a dos dec
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\nPrincipales:");
-//         cena.principales.forEach(item => {
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\nPostres:");
-//         cena.postres.forEach(item => {
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\n---------------------------");  
-
-//    } else if (tipoMenu = "Desayuno") {
-//           console.log("\nEntrantes:");
-//         cena.entrantes.forEach(item => {  //redondea y limita a dos dec
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\nPrincipales:");
-//         cena.principales.forEach(item => {
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\nPostres:");
-//         cena.postres.forEach(item => {
-//           console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//         });
-
-//         console.log("\n---------------------------");  
-//     }
-
-//   }
-
-
-
-  // Función para imprimir la CARTAS 
-// function generarMenuLunch() {
-//   console.log("--- Restaurante BOTTEGA ---\n          CARTA: MENÚ - LUNCH");
-
-//   console.log("\nEntrantes:");
-//   lunch.entrantes.forEach(item => {  //redondea y limita a dos dec
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\nPrincipales:");
-//   lunch.principales.forEach(item => {
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\nPostres:");
-//   lunch.postres.forEach(item => {
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\n---------------------------");
-  
-// }
-// const menuLunch = generarMenuLunch();
-
-
-// function mostrarCartaCena() {
-//   console.log("--- Restaurante BOTTEGA ---\n          CARTA: - MENÚ CENA");
-
-//   console.log("\nEntrantes:");
-//   cena.entrantes.forEach(item => {  //redondea y limita a dos dec
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\nPrincipales:");
-//   cena.principales.forEach(item => {
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\nPostres:");
-//   cena.postres.forEach(item => {
-//     console.log(`- ${item.nombre}: ${item.precio.toFixed(2)} €`);
-//   });
-
-//   console.log("\n---------------------------");
-// }
-// console.log(mostrarCartaCena());
-
-//import moment from "moment";
-// Llama a la función para mostrar la carta
-
