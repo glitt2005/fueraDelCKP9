@@ -119,7 +119,7 @@ do {
 
     } else if ( (inputHora > "23:00" && inputHora < "07:00") || (inputHora > "15:30" && inputHora < "19:00") ) {
       
-      alert("HORARIO INCORRECTO, PRUEBA DE NUEVO");
+      alert("HORARIO INCORRECTO, por favor introduce otra hora");
     }
   } 
   
@@ -136,7 +136,7 @@ do {
   
       alert(`Menú elegido:\nLUNCH   \n\n ENTRANTES:\n ${lunch.entrantes[0].nombre}   -   ${lunch.entrantes[1].nombre}   -   ${lunch.entrantes[2].nombre} \n PRINCIPALES:\n ${lunch.principales[0].nombre}   -   ${lunch.principales[1].nombre}   -   ${lunch.principales[2].nombre}\n POSTRES:\n ${lunch.postres[0].nombre}   -   ${lunch.postres[1].nombre}   -   ${lunch.postres[2].nombre}`);
 
-      // HACEMOS LA PRUEBA AQUÍ - LUNCH
+     
       // si han elegido HORARIO LUNCH, opción 2
 
       let respEntrante = prompt(`Elige tu opción de ENTRANTES\n 1. ${lunch.entrantes[0].nombre} - 2. ${lunch.entrantes[1].nombre} - 3. ${lunch.entrantes[2].nombre}` ); 
@@ -205,7 +205,7 @@ do {
       const totalFra = selectedEntrante.precio + selectedPrincipal.precio + selectedPostre.precio;
 
 
-      alert (`    FACTURA:\nEntrante: ${selectedEntrante.nombre} €  = ${selectedEntrante.precio} €\n
+      alert (` FACTURA:\n      Entrante: ${selectedEntrante.nombre} €  = ${selectedEntrante.precio} €\n
       Plato Principal: ${selectedPrincipal.nombre} € = ${selectedPrincipal.precio} €\n
       Postre: ${selectedPostre.nombre} € = ${selectedPostre.precio} €\n
       --------------------------------------
@@ -213,8 +213,6 @@ do {
       
 
 
-
-  
       
 
 
@@ -222,7 +220,8 @@ do {
       alert(`Menú elegido:\nCENA \n\n ENTRANTES:\n ${cena.entrantes[0].nombre}   -   ${cena.entrantes[1].nombre}   -   ${cena.entrantes[2].nombre} \n PRINCIPALES:\n ${cena.principales[0].nombre}   -   ${cena.principales[1].nombre}   -   ${cena.principales[2].nombre}\n POSTRES:\n ${cena.postres[0].nombre}   -   ${cena.postres[1].nombre}   -   ${cena.postres[2].nombre}`); 
         
 
-      //si han elegido CENAS, opción 3
+
+      // si han elegido HORARIO CENA, opción 3
 
       let respEntrante = prompt(`Elige tu opción de ENTRANTES\n 1. ${cena.entrantes[0].nombre} - 2. ${cena.entrantes[1].nombre} - 3. ${cena.entrantes[2].nombre}` ); 
       let selectedEntrante = null;
@@ -302,7 +301,7 @@ do {
       const totalFra = selectedEntrante.precio + selectedPrincipal.precio + selectedPostre.precio;
 
 
-      alert (`    FACTURA:    \n    Entrante: ${selectedEntrante.nombre} €  = ${selectedEntrante.precio} €\n
+      alert (`FACTURA:\n      Entrante: ${selectedEntrante.nombre} €  = ${selectedEntrante.precio} €\n
       Plato Principal: ${selectedPrincipal.nombre} € = ${selectedPrincipal.precio} €\n
       Postre: ${selectedPostre.nombre} € = ${selectedPostre.precio} €\n
       --------------------------------------
