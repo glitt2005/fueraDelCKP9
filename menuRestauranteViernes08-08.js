@@ -95,50 +95,44 @@ do {
     }
   } 
   
+  if (inputHora >= "08:00" && inputHora <= "11:00") {
+     alert("Menú Desayuno");
   
-
-  if (inputHora !== null) {
-    
-   
     let respDesayuno = prompt(`Elige tu opción de DESAYUNOS\n 1. ${desayuno[0].nombre} - 2. ${desayuno[1].nombre} - 3. ${desayuno[2].nombre}` ); 
     let selectedDesayuno = null;
-    let selectedPrecio = null;
-    if (inputHora >= "08:00" && inputHora <= "11:00") {
-      alert("Menú Desayuno");
+    let selectedPrecio = null;      
 
-      if (respDesayuno !== null) {
-        if (respDesayuno === "1") {
-          selectedDesayuno = desayuno[0].nombre; 
-          selectedPrecio = desayuno[0].precio;    
-          alert(`Has elegido la opción 1 de DESAYUNO:  ${desayuno[0].nombre}  - ${desayuno[0].precio} €`);
+    if (respDesayuno !== null) {
+      if (respDesayuno === "1") {
+        selectedDesayuno = desayuno[0].nombre; 
+        selectedPrecio = desayuno[0].precio;    
+        alert(`Has elegido la opción 1 de DESAYUNO:  ${desayuno[0].nombre}  - ${desayuno[0].precio} €`);
 
-        } else if (respDesayuno === "2") {
-          selectedDesayuno = desayuno[1].nombre;   
-          selectedPrecio = desayuno[1].precio;        
-          alert(`Has elegido la opción 2 de DESAYUNO:  ${desayuno[1].nombre} - ${desayuno[1].precio} €`);
+      } else if (respDesayuno === "2") {
+        selectedDesayuno = desayuno[1].nombre;   
+        selectedPrecio = desayuno[1].precio;        
+        alert(`Has elegido la opción 2 de DESAYUNO:  ${desayuno[1].nombre} - ${desayuno[1].precio} €`);
 
-        } else if (respDesayuno === "3") {
-          selectedDesayuno = desayuno[2].nombre;
-          selectedPrecio = desayuno[2].precio;           
-          alert(`Has elegido la opción 3 de DESAYUNO:  ${desayuno[2].nombre} - ${desayuno[2].precio} €`);
-          
-        } else {
-          alert("Opción no válida, vuelve a seleccionar");
-        }
+      } else if (respDesayuno === "3") {
+        selectedDesayuno = desayuno[2].nombre;
+        selectedPrecio = desayuno[2].precio;           
+        alert(`Has elegido la opción 3 de DESAYUNO:  ${desayuno[2].nombre} - ${desayuno[2].precio} €`);
+        
       } else {
-        alert("No has elegido ninguna opción.");
-
+        alert("Opción no válida, vuelve a seleccionar");
       }
+    } else {
+      alert("No has elegido ninguna opción.");
 
     }
+ 
 
     // generar FACTURA
-    
-    alert (` FACTURA:\n      Desayuno: ${selectedDesayuno} €  = ${selectedPrecio} €\n
-    
-    --------------------------------------
-    Total factura: ${selectedPrecio} €`);
-
+      
+      alert (` FACTURA:\n      Desayuno: ${selectedDesayuno} €  = ${selectedPrecio} €\n
+      
+      --------------------------------------
+      Total factura: ${selectedPrecio} €`);
 
       
 
@@ -146,8 +140,7 @@ do {
     } else if (inputHora  > "11:00" && inputHora  <= "15:30") {
   
       alert(`Menú elegido:\nLUNCH   \n\n ENTRANTES:\n ${lunch.entrantes[0].nombre}   -   ${lunch.entrantes[1].nombre}   -   ${lunch.entrantes[2].nombre} \n PRINCIPALES:\n ${lunch.principales[0].nombre}   -   ${lunch.principales[1].nombre}   -   ${lunch.principales[2].nombre}\n POSTRES:\n ${lunch.postres[0].nombre}   -   ${lunch.postres[1].nombre}   -   ${lunch.postres[2].nombre}`);
-
-     
+    
       // si han elegido HORARIO LUNCH, opción 2
 
       let respEntrante = prompt(`Elige tu opción de ENTRANTES\n 1. ${lunch.entrantes[0].nombre} - 2. ${lunch.entrantes[1].nombre} - 3. ${lunch.entrantes[2].nombre}` ); 
