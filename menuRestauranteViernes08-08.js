@@ -35,28 +35,15 @@ const cena = {
   ]
 };
 
+const desayuno = [
+  {nombre: "español",  precio: 5.0},
+  {nombre: "frances",  precio: 7.50},
+  {nombre: "ingles",  precio: 10.00},
 
-const desayuno = {
-  español: [
-    { nombre: "Desayuno español pequeño", precio: 3.50 },
-    { nombre: "Desayuno español mediano", precio: 7.00 },
-    { nombre: "Desayuno español grande", precio: 9.50 }
-  ],
-
-  frances: [
-    { nombre: "Desayuno francés pequeño", precio: 4.00 },
-    { nombre: "Desayuno francés mediano", precio: 8.00 },
-    { nombre: "Desayuno francés grande", precio: 10.00 }
-  ],
-
-  ingles: [
-    { nombre: "Desayuno inglés pequeño", precio: 4.50 },
-    { nombre: "Desayuno inglés mediano", precio: 9.50 },
-    { nombre: "Desayuno inglés grande", precio: 12.00 }
-  ]
-};
+];
 
 
+let comentarios = ["¡Buena Elección!!", "¡Estupenda decisión!", "¡¡Eso está de muerte!!", "Eso está rico...rico...", "¡Tú si que sabes elegir!"]
 
 
 
@@ -69,21 +56,6 @@ let inputHora = '';
 // ];
 
 
-
-// do {
-   
-//     inputHora = prompt("Introduce la hora en formato HH:MM (ej. 14:30):");
-
-//     if (inputHora === null) {
-//         alert("Operación cancelada.");
-//         break; 
-//     }
-  
-//     if (!formatoHora.test(inputHora)) {
-//         alert("Formato de hora no válido. Por favor, introduce la hora en formato HH:MM. Ejemplo: 13:45");
-//     }
-
-// } while (!formatoHora.test(inputHora)); 
 
 
 
@@ -126,9 +98,48 @@ do {
   
 
   if (inputHora !== null) {
-
+    
+   
+    let respDesayuno = prompt(`Elige tu opción de DESAYUNOS\n 1. ${desayuno[0].nombre} - 2. ${desayuno[1].nombre} - 3. ${desayuno[2].nombre}` ); 
+    let selectedDesayuno = null;
+    let selectedPrecio = null;
     if (inputHora >= "08:00" && inputHora <= "11:00") {
       alert("Menú Desayuno");
+
+      if (respDesayuno !== null) {
+        if (respDesayuno === "1") {
+          selectedDesayuno = desayuno[0].nombre; 
+          selectedPrecio = desayuno[0].precio;    
+          alert(`Has elegido la opción 1 de DESAYUNO:  ${desayuno[0].nombre}  - ${desayuno[0].precio} €`);
+
+        } else if (respDesayuno === "2") {
+          selectedDesayuno = desayuno[1].nombre;   
+          selectedPrecio = desayuno[1].precio;        
+          alert(`Has elegido la opción 2 de DESAYUNO:  ${desayuno[1].nombre} - ${desayuno[1].precio} €`);
+
+        } else if (respDesayuno === "3") {
+          selectedDesayuno = desayuno[2].nombre;
+          selectedPrecio = desayuno[2].precio;           
+          alert(`Has elegido la opción 3 de DESAYUNO:  ${desayuno[2].nombre} - ${desayuno[2].precio} €`);
+          
+        } else {
+          alert("Opción no válida, vuelve a seleccionar");
+        }
+      } else {
+        alert("No has elegido ninguna opción.");
+
+      }
+
+    }
+
+    // generar FACTURA
+    
+    alert (` FACTURA:\n      Desayuno: ${selectedDesayuno} €  = ${selectedPrecio} €\n
+    
+    --------------------------------------
+    Total factura: ${selectedPrecio} €`);
+
+
       
 
 
@@ -144,12 +155,15 @@ do {
       if (respEntrante !== null) {
         if (respEntrante === "1") {
           selectedEntrante = lunch.entrantes[0];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 1 de ENTRANTES:  ${lunch.entrantes[0].nombre} - ${lunch.entrantes[0].precio} €`);
         } else if (respEntrante === "2") {
           selectedEntrante = lunch.entrantes[1];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 2 de ENTRANTES:  ${lunch.entrantes[1].nombre} - ${lunch.entrantes[1].precio} €`);
         } else if (respEntrante === "3") {
           selectedEntrante = lunch.entrantes[2];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 3 de ENTRANTES:  ${lunch.entrantes[2].nombre} - ${lunch.entrantes[2].precio} €`);
         } else {
           alert("Opción no válida, vuelve a seleccionar");
@@ -166,12 +180,15 @@ do {
       if (respPrincipal !== null) {     
         if (respPrincipal === "1") {
           selectedPrincipal = lunch.principales[0];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 1 de PLATOS PRINCIPALES:   ${lunch.principales[0].nombre} - ${lunch.principales[0].precio} €`);
         } else if (respPrincipal === "2") {
           selectedPrincipal = lunch.principales[1];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 2 de PLATOS PRINCIPALES;   ${lunch.principales[1].nombre} - ${lunch.principales[1].precio} €`);
         } else if (respPrincipal === "3") {
           selectedPrincipal = lunch.principales[2];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 3 de PLATOS PRINCIPALES:   ${lunch.principales[2].nombre} - ${lunch.principales[2].precio} €`);
         } else {
           alert("Opción no válida, vuelve a seleccionar");
@@ -187,12 +204,15 @@ do {
       if (respPostre !== null) {     
         if (respPostre === "1") {
           selectedPostre = lunch.postres[0];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 1 de POSTRES:    ${lunch.postres[0].nombre} - ${lunch.postres[0].precio} €`);
         } else if (respPostre === "2") {
           selectedPostre = lunch.postres[1];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`"Has elegido la opción 2 de POSTRES:   ${lunch.postres[1].nombre} - ${lunch.postres[1].precio} €`);
         } else if (respPostre === "3") {
           selectedPostre = lunch.postres[2];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 3 de POSTRES:    ${lunch.postres[2].nombre} - ${lunch.postres[2].precio} €`);
         } else {
           alert("Opción no válida, vuelve a seleccionar");
@@ -230,14 +250,17 @@ do {
       
         if (respEntrante === "1") {
           selectedEntrante = cena.entrantes[0];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 1 de ENTRANTES:  ${cena.entrantes[0].nombre} - ${cena.entrantes[0].precio} €`);
 
         } else if (respEntrante === "2") {
           selectedEntrante = cena.entrantes[1];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 2 de ENTRANTES:  ${cena.entrantes[1].nombre} - ${cena.entrantes[1].precio} €`);
 
         } else if (respEntrante === "3") {
           selectedEntrante = cena.entrantes[2];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 3 de ENTRANTES:  ${cena.entrantes[2].nombre} - ${cena.entrantes[2].precio} €`);
 
         } else {
@@ -254,14 +277,17 @@ do {
       if (respEntrante !== null) {     
         if (respPrincipal === "1") {
           selectedPrincipal = cena.principales[0];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 1 de PLATOS PRINCIPALES:   ${cena.principales[0].nombre} - ${cena.principales[0].precio} €`);
 
         } else if (respPrincipal === "2") {
           selectedPrincipal = cena.principales[1];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 2 de PLATOS PRINCIPALES;   ${cena.principales[1].nombre} - ${cena.principales[1].precio} €`);
 
         } else if (respPrincipal === "3") {
           selectedPrincipal = cena.principales[2];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 3 de PLATOS PRINCIPALES:   ${cena.principales[2].nombre} - ${cena.principales[2].precio} €`);
 
         } else {
@@ -279,14 +305,17 @@ do {
       if (respEntrante !== null) {     
         if (respPostre === "1") {
           selectedPostre = cena.postres[0];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 1 de POSTRES:    ${cena.postres[0].nombre} - ${cena.postres[0].precio} €`);
 
         } else if (respPostre === "2") {
           selectedPostre = cena.postres[1];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`"Has elegido la opción 2 de POSTRES:   ${cena.postres[1].nombre} - ${cena.postres[1].precio} €`);
 
         } else if (respPostre === "3") {
           selectedPostre = cena.postres[2];
+          alert(comentarios[Math.floor(Math.random() * comentarios.length)]);
           alert(`Has elegido la opción 3 de POSTRES:    ${cena.postres[2].nombre} - ${cena.postres[2].precio} €`);
 
         } else {
@@ -307,10 +336,10 @@ do {
       --------------------------------------
       Total factura: ${totalFra} €`);
 
+      alert ("")
+
 } 
   
-}
-
 } while  (inputHora !== null);
 
 
